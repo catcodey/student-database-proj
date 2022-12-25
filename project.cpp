@@ -60,7 +60,8 @@ void login(){
         dash();
         while(i>0){                    //admin verification
             i--;                      //no of attempts keep decreasing with every re-login.
-            cout<<"\n\t\t\t\t\tEnter password: ";
+            tab();
+            cout<<"Enter password: ";
             cin>>pass;
             if(strcmp(pass,"pw1024")==0){              //default password to login as admin:pw1024
                 tab2();
