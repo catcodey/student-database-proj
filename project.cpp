@@ -2,9 +2,15 @@
 #include<string.h>
 #include <chrono>
 #include <thread>
-
+#include<fstream>
+#include<sstream>
+#include<vector>
 using namespace std;
 void login();
+void viewdata();
+void deletedata();
+void adddata();
+void attendance();
 void dash();
 void tab();
 void tab2();
@@ -28,21 +34,45 @@ int main()
 void menu(){
     int ch2;
     tab();
-    cout<<"MAIN MENU\n";
+    cout<<"\tMAIN MENU\n";
     dash();
     tab();
-    cout<<"1.View data";
+    cout<<"\t1.View data";
     tab();
-    cout<<"2.Add data";
+    cout<<"\t2.Add data";
     tab();
-    cout<<"3.Delete data";
+    cout<<"\t3.Delete data";
     tab();
-    cout<<"4.Attendance";
+    cout<<"\t4.Attendance";
     tab();
-    cout<<"5.Exit";
+    cout<<"\t5.Exit";
     tab();
-    cout<<"enter choice: ";
+    cout<<"\tenter choice: ";
     cin>>ch2;
+    switch(ch2){
+        
+        case 1:
+        viewdata();
+        break;
+        case 2:
+        adddata();
+        break;
+        case 3:
+        deletedata();
+        break;
+        case 4:
+        attendance();
+        break;
+        case 5:
+        exit(0);
+        cout<<"exited";
+        default:
+        tab();
+        cout<<"\tinvalid input\n";
+        menu();
+        
+    }
+    menu();
 }
 void login(){
     int ch1,i=3,captcha,j=3;  //max no of login attempts:3  i:for admin  j:for student
@@ -58,10 +88,9 @@ void login(){
         case 1:              //admin login
         cout<<"\n\t\t\t\t\t      WELCOME ADMIN\n";
         dash();
-        while(i>0){                    //admin verification
-            i--;                      //no of attempts keep decreasing with every re-login.
-            tab();
-            cout<<"Enter password: ";
+        while(i>0){        //admin verification
+            i--;    //no of attempts keep decreasing with every re-login.
+            cout<<"\n\t\t\t\t\tEnter password: ";
             cin>>pass;
             if(strcmp(pass,"pw1024")==0){              //default password to login as admin:pw1024
                 tab2();
@@ -119,76 +148,6 @@ void login(){
         //menu();
         }
 }
-
-
-//DELETION
-
-#include <iostream>
-#include<fstream>
-#include<sstream>
-#include<string.h>
-#include<vector>
-using namespace std;
-void adddata();
-int main()
-{
-    adddata();
-    string str,name1;
-    int rollno,num,i;
-    //string word2;
-    vector<string>row;
-    
-    /*obj.open("data.txt",ios::out);
-    cin>>name>>name1;
-    obj<<name<<" "<<name1<<"\n";
-    cin>>rollno;
-    obj<<rollno;
-    obj.close();*/
-    fstream obj,obj1;
-    obj.open("data.txt",ios::out|ios::in);
-    obj1.open("data1.txt",ios::in|ios::out);
-    /*while(!obj.eof()){
-        getline(obj,word);
-        //cout<<typeid(str).name();
-        cout<<word<<"\n";
-        
-    }*/
-    string word;
-    cin>>num;
-    while(getline(obj,str)){
-        row.clear();
-        stringstream obj(str);
-        while(getline(obj,word,',')){
-            row.push_back(word);
-        }
-        int word1=stoi(row[0]);
-        if(num!=word1){
-            for(i=0;i<row.size();i++){
-                obj1<<row[i]<<" ";
-            }
-            obj1<<"\n";
-        }
-        rename("data1.txt","data.txt");
-    }
-    obj.close();
-    obj1.close();
-    string word2,name,branch;
-    int rollNumber;
-    obj.open("data.txt",ios::in|ios::out);
-    while(!obj.eof()){
-       // getline(obj, rollNumber, ",");
-       // getline(obj, name, ',');
-        
-       // getline(obj, branch, ',');
-       
-        //cout<<typeid(str).name();
-        getline(obj,word2);
-        //cout << rollNumber << " \t " << name << branch <<endl;
-        cout<<word2;
-    }
-
-    return 0;
-}
 void adddata(){
     fstream file("data.txt",ios::out| ios::app);
    //check of the file is open or not
@@ -197,43 +156,43 @@ void adddata(){
         cout<<"failed to open the file";
     }
     else{
-        cout<<"enter the data";
+        cout<<" \t\t\tEnter the data\n";
     }
     //declare variables
     string name,college,branch;
     int rollno,attendance,physics,che,maths;
     //enter the  values
-    cout<<"\n enter the rollno : ";
+    cout<<"\n \t\t\tenter the rollno : ";
     cin>>rollno;
-    file<<rollno<<",";
-    cout <<"\n enter the name of the student : ";
+    file<<rollno<<"\t";
+    cout <<"\n \t\t\tenter the name of the student : ";
     cin>>name;
-    file<<name<<",";
-    cout<<"\n enter the college name: ";
+    file<<name<<"\t\t";
+    cout<<"\n \t\t\tenter the college name: ";
     cin>>college;
-    file<<college<<",";
+    file<<college<<"\t\t";
 
-cout<<"\n enter the branch: ";
+cout<<"\n \t\t\tenter the branch: ";
     cin>>branch;
-    file<<branch<<",";
+    file<<branch<<"\t\t";
     
-    cout<<"\n enter the attendance percentage: "; 
+    cout<<"\n \t\t\tenter the attendance percentage: "; 
     cin>>attendance;
-    file<<attendance<<",";
-    cout<<"\n enter the physics mark: ";
+    file<<attendance<<"\t\t";
+    cout<<"\n \t\t\tenter the physics mark: ";
     cin>>physics;
-    file<<physics<<",";
-    cout<<"\n enter the maths mark: ";
+    file<<physics<<"\t\t";
+    cout<<"\n \t\t\tenter the maths mark: ";
     cin>>maths;
-    file<<maths<<",";
-    cout<<"\n enter the chemistry mark: ";
+    file<<maths<<"\t\t";
+    cout<<"\n \t\t\tenter the chemistry mark: ";
     cin>>che;
-    file<<che<<",";
+    file<<che<<"\t\t";
     file<<"\n";
     //close file
     file.close();
     //options to add the missed out data
-    cout<<"\n add missed out data? (YES/NOOO) : ";
+    cout<<"\n \t\t\tadd missed out data? (YES/NOOO) : ";
     string option;
     cin>>option;
     if(option=="YES")
@@ -243,8 +202,82 @@ cout<<"\n enter the branch: ";
     else if(option=="NOOO")
     {//back to the main menu
        // admindata();
+       menu();
     }
     
     
+}
+void deletedata(){
+    string str,name1;
+    int rollno,num,i,count;
+    string q;
+    vector<string>row;
+    
+    fstream obj,obj1;
+    obj.open("data.txt",ios::in);
+    obj1.open("data1.txt",ios::out);
+    if(!getline(obj,q)){
+        //cout<<obj.tellp()<<"\t";
+        cout<<" \n\t\t\tempty\n";
+    }
+    
+    else{
+        obj.seekg(0, ios::beg);
+        //cout<<obj.tellp()<<"\t";
+        string word;
+        cout<<" \n\t\t\tEnter roll no of record you wish to delete: ";
+        cin>>num;
+        while(getline(obj,str)){
+            row.clear();
+            stringstream obj(str);
+            while(getline(obj,word,' ')){
+                row.push_back(word);
+            }
+            int word1=stoi(row[0]);
+            //cout<<str;
+            if(num!=word1){
+                obj1<<str;
+                obj1<<"\n";
+            }
+            else if(num==word1){
+                 count=1;
+            }
+            rename("data1.txt","data.txt");
+        }
+        if(count==1){
+            cout<<" \n\t\t\tRECORD DELETED\n";
+        }
+        else{
+            cout<<" \n\t\t\tRecord doesn't exist";
+        }
+    }
+    obj.close();
+    obj1.close();
+    
+    
+}
+void viewdata(){
+     fstream obj;
+      obj.open("data.txt",ios::in|ios::out);
+    if(!obj)
+    {
+        cout<<"no such file in existence";
+    }
+     cout << "\n\t\t\t\t\t\t|Students Record| \n";
+     cout << "\n  ---------------------------------------------------------------------------------------------------------------\n" <<endl<<endl;
+    cout<<"Roll\tName\t\tCollege\t\tbranch\t\tAttendance\tPhysics\t\tChemistry\tMaths\n";
+    
+   
+    string word2,name,branch;
+    int rollNumber;
+  
+    while(!obj.eof()){
+       
+        getline(obj,word2);
+        cout<<word2<<"\n";
+    }
+    obj.close();
+}
+void attendance(){
     
 }
