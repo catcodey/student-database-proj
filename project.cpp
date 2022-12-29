@@ -168,6 +168,8 @@ void viewdata(){
     }
      cout << "\n\t\t\t\t\t\t|Students Record| \n";
      cout << "\n  ---------------------------------------------------------------------------------------------------------------\n" <<endl<<endl;
+    cout<<"\t\t\t\t\t\t\t\t\t\t\tMARKS\n";
+    cout<<"\t\t\t\t\t\t\t\t\t***************************************\n";
     cout<<"   Roll No    Name\t   College\t   branch\t Attendance %\t Physics  \tChemistry\t  Maths\n";
     
    
@@ -303,6 +305,9 @@ void menu(){
         attendance();
         break;
         case 6:
+        tab();
+        cout<<"enter roll no: ";
+        cin>>studentroll;
         testreport();
         break;
         case 7:
@@ -351,8 +356,13 @@ void testreport(){
             //cout<<str;
             
             if(studentroll==word1){
-                     
-                    cout<<"\n"<<row[5]<<"\t"<<row[6]<<"\t"<<row[7]<<"\n";
+                    tab();
+                    cout<<"\t\t  MARKS\n";
+                    cout<<"\t\t\t\t\t*******************************************\n";
+                    tab();
+                    cout<<"Physics\t\tChemistry\t Maths\n"; 
+                    tab();
+                    cout<<" "<<row[5]<<"\t\t  "<<row[6]<<"\t\t  "<<row[7]<<"\n";
                     count=1;
                     break;
             }
