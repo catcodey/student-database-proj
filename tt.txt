@@ -1,0 +1,17 @@
+    period |    1            2          BREAK          3            4         BREAK        5            6 
+   --------|----------------------------------------------------------------------------------------------------
+    Day    | 
+   -------------------------------------------------------------------------------------------------------------
+    Monday      Phy         Math         B           Free hr       Chem         B        Phy Lab      Phy Lab
+    Tuesday    Chem lab   Chem Lab       R             MPE         Math         R         Phy           SE
+    Wednesday   Math         SE          E            Chem         Free hr      E         Math         MPE 
+    Thursday    Math        Phy          A            Phy          Chem         A         MPE         Free hr
+    Friday      Chem        SE           K            Math         Chem         K         Phy          Phy
+    ------------------------------------------------------------------------------------------------------------
+
+    Sno  Mnemonics      Subject name                           Credits
+    1.     Phy       Semiconductor Physics                        5
+    2.     Chem      Chemistry                                    4
+    3.     Math      Calculus and Linear Algebra                  5
+    4.      SE       Social Engineering                           2
+    5.     MPE       Management Principles For Engineers          3
