@@ -17,25 +17,24 @@ for i in f.readlines():
     else:
         b=b+int(x[5])+int(x[6])+int(x[7])
 #print(a)
-outof100=a/((c)*3)
-outof100_1=b/3
+outof100=a/((c)*3)  #other students average total
+outof100_1=b/3       #my average
 l.append(outof100)
 
 l1.append(outof100_1)
 
 
-# creating the dataset
+# x and y axis stuff
 
 courses = ['Your average','Class average']
 values = [l1[0],l[0]]
 
-fig = plt.figure(figsize = (10, 5))
+fig = plt.figure(figsize = (10, 5))  #graph size
 
 # creating the bar plot
 plt.bar(courses, values, color ='maroon',
 		width = 0.4)
 
-#plt.xlabel("Courses offered")
 plt.ylabel("Marks Percentage")
 plt.title("Your Performace")
 plt.show()
