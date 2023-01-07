@@ -31,10 +31,10 @@ values = [l1[0],l[0]]
 
 fig = plt.figure(figsize = (10, 5))  #graph size
 
-# creating the bar plot
-plt.bar(courses, values, color ='maroon',
+# plotting graph
+plt.bar(courses, values, color ='maroon',  
 		width = 0.4)
 
-plt.ylabel("Marks Percentage")
-plt.title("Your Performace")
+plt.ylabel("Marks Percentage") #y axis label
+plt.title("Your Performace")  #graph title
 plt.show()
