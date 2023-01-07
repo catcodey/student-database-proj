@@ -1,7 +1,7 @@
 #include<iostream>
 #include<sstream>
 #include<fstream>
-#include<string.h>
+#include<cstring>
 #include<vector>
 #include<iomanip>
 #include <chrono>
@@ -11,7 +11,7 @@ void dash();
 void tab();
 void tab2();
 void deletedata();
-void addadata();
+void adddata();
 void viewdata();
 void viewstudentdata();
 void attendance();
@@ -21,6 +21,7 @@ void login();
 void menu();
 void menu1();
 void timetable();
+void testperformance();
 int studentroll;
 int main(){
     login();
@@ -86,7 +87,7 @@ void modifydata(){
                  obj1<<"\n";
                  count=1;
             }
-            rename("data1.txt","data.txt");
+            
         }
         if(count==1){
             cout<<" \n\t\t\tRECORD modified\n";
@@ -97,6 +98,8 @@ void modifydata(){
     
     obj.close();
     obj1.close();
+    remove("data.txt");
+    rename("data1.txt","data.txt");
     
     
 }
@@ -236,7 +239,9 @@ void menu1(){
     tab();
     cout<<"\t4.Timetable";
     tab();
-    cout<<"\t5.Exit";
+    cout<<"\t5.Test performance";
+    tab();
+    cout<<"\t6.Exit";
     tab();
     cout<<"\tenter choice: ";
     cin>>ch2;
@@ -255,6 +260,9 @@ void menu1(){
         timetable();
         break;
         case 5:
+        testperformance();
+        break;
+        case 6:
         exit(0);
         cout<<"exited";
         default:
@@ -410,7 +418,7 @@ void deletedata(){
             else if(num==word1){
                  count=1;
             }
-            rename("data1.txt","data.txt");
+            
         }
         if(count==1){
             cout<<" \n\t\t\tRECORD DELETED\n";
@@ -421,7 +429,8 @@ void deletedata(){
     }
     obj.close();
     obj1.close();
-    
+    remove("data.txt");
+    rename("data1.txt","data.txt");
     
 }
 void login(){
@@ -505,6 +514,24 @@ void login(){
 void attendance(){
     
 }
-void timetable(){
+void testperformance(){
+    tab();
     
+   
+     std::string filename = "C:\\Users\\user\\OneDrive\\Desktop\\graph.py";
+    std::string command = "python ";
+    command += filename;
+    system(command.c_str());
+    
+
+}
+void timetable(){
+    string str1;
+    fstream obj;
+    obj.open("tt.txt",ios::in);
+    while(getline(obj,str1)){
+        cout<<str1<<"\n";
+        
+    }
+    obj.close();
 }
